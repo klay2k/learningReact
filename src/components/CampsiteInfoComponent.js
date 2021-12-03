@@ -12,7 +12,7 @@ class CommentForm extends Component {
         super(props);
 
         this.state = {
-          isNavOpen: false
+          isModdalOpen: false
         };
         this.toggleModal = this.toggleModal.bind(this);
     }
@@ -30,12 +30,13 @@ class CommentForm extends Component {
 
     render() {
         return (
-            <><Button className="fa fa-pencil fa-lg" outline onClick={this.toggleModal}> Submit Comment</Button><Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
+            <React.Fragment>
+                <Button className="fa fa-pencil fa-lg" outline onClick={this.toggleModal}> Submit Comment</Button><Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
                 <ModalHeader toggle={this.toggleModal}>Submit Comment</ModalHeader>
                 <ModalBody>
                     <LocalForm onSubmit={values => this.handleSubmit(values)}>
                         <div className="form-group">
-                            <Label htmlFor="rating" md={10}>Rating</Label>
+                            <Label htmlFor="rating">Rating</Label>
                             <Control.select model=".rating" name="rating"
                                 className="form-control">
                                 <option>1</option>
@@ -46,7 +47,7 @@ class CommentForm extends Component {
                             </Control.select>
                         </div>
                         <div className="form-group">
-                            <Label htmlFor="author" md={10}>Author</Label>
+                            <Label htmlFor="author" >Your Name</Label>
                             <Control.text model=".author" id="author" name="author"
                                 placeholder="Your Name"
                                 className="form-control"
@@ -65,7 +66,7 @@ class CommentForm extends Component {
                                 }} />
                         </div>
                         <div className="form-group">
-                            <Label htmlFor="text" md={10}>Comment</Label>
+                            <Label htmlFor="text">Comment</Label>
                             <Control.textarea rows="6" model=".text" id="text" name="text"
                                 placeholder=""
                                 className="form-control" />
@@ -75,7 +76,8 @@ class CommentForm extends Component {
                         </div>
                     </LocalForm>
                 </ModalBody>
-            </Modal></>
+            </Modal>
+            </React.Fragment>
         );
 
     }
